@@ -71,13 +71,13 @@ instance ToJSON StreamName where
 instance ToJSON JsonErrorBody where
     toEncoding = genericToEncoding defaultOptions
 
-getInfo :: ActionM()
+getInfo :: ActionM ()
 getInfo = text "info about the api" *> status badRequest400
 
 -- Which is the same as:
 --
-getInfoB :: ActionM()
-getInfoB = do
+getInfoDoEdition :: ActionM ()
+getInfoDoEdition = do
     text "Here's some info about the api, or not"
     status badRequest400
 
@@ -86,6 +86,15 @@ resp :: ToJSON a =>
      -> a
      -> ActionM ()
 resp code entity = Web.Scotty.json entity *> status code
+
+-- Note this type definition:   type ActionM = ActionT Text IO
+-- and this:                    param :: Parsable a => Text -> ActionM a
+getStream :: ActionM ()
+getStream = param "name"                                        -- Got an ActionM string, upwrap the ActionM monad:
+                >>= (\streamStr -> return (getTransportMessage <$> streamName streamStr))                      
+                >>= either                                      -- Got an ActionM (Either StreamNameError TransportMessage)
+                        ( resp badRequest400 . toErrorBody )     -- finally using json/status in the resp function
+                        ( resp ok200 )                          --      to turn into ActionM ()
 
 main = scotty 3000 $ do
     get "/api/info" getInfo
@@ -97,3 +106,4 @@ main = scotty 3000 $ do
             ( resp ok200 )  
             transportMsg
 
+    get "/api/eventstreamBindEdition/:name" getStream
