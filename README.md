@@ -5,14 +5,19 @@ A very simple sample project for playing around with the Haskell [Scotty](https:
 If you are interested in the code in its most simplest api form (i.e. just past 'hello world', before further, shall we generously say, experiments were performed on the code), try it at this commit:
 
 https://github.com/hombredequeso/scotty-api/tree/b29c8e2342ab96692e49727af2e099288f64d84d
-# Getting Started
 
-## Prerequisites
+Why Scotty? Because of this:
+["A Haskell web framework inspired by Ruby's Sinatra, using WAI and Warp."](https://hackage.haskell.org/package/scotty)
+which puts it squarely in the set of simple web frameworks I like. Notable, it gives it a genetic relationship to the [Nancy](http://nancyfx.org/) .net framwork, which I have used in both C# and F# (although to be honest, parts of it look a lot more like the more functional [Suave](https://suave.io/)) framework.
+
+## Getting Started
+
+### Prerequisites
 
 The primary prerequisite is the [Haskell Platform](https://www.haskell.org/platform/).
 Ensure that is is at least 8.2.2.
 
-## Running
+### Running
 From the project root directory:
 ```
 > stack build
@@ -20,7 +25,7 @@ From the project root directory:
 *Main>  main
 ```
 
-## Usage
+### Usage
 ```
 > curl localhost:3000/api/eventStream/abcd
 {"header":{"messageStream":"abcd"},"messages":[{"mType":"type1","description":"some message"},{"mType":"type2","description":"another message"}]}
@@ -29,7 +34,7 @@ From the project root directory:
 >
 ```
 
-# Resources
+## Resources
 Helpful resources along the way.
 
 This play project was started having reached 'chapter 19' of the [HaskellBook](http://haskellbook.com/). By this stage one should well and truly know enough to be dangerous.
@@ -41,7 +46,7 @@ Of the tutorials, these were initially the most helpful in getting (just) past '
 * [24 Days of Hackage: scotty](https://ocharles.org.uk/blog/posts/2013-12-05-24-days-of-hackage-scotty.html)
 * [PRACTICAL HASKELL - BUILDING A JSON API](http://seanhess.github.io/2015/08/19/practical-haskell-json-api.html)
 
-# Initial Project Creation
+## Initial Project Creation
 This project was created as follows:
 
 ##### Create Project Using Stack

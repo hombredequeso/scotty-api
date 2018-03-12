@@ -68,9 +68,20 @@ instance ToJSON TransportMessage where
 instance ToJSON StreamName where
     toEncoding = genericToEncoding defaultOptions
 
+instance ToJSON JsonErrorBody where
+    toEncoding = genericToEncoding defaultOptions
+
+resp :: ToJSON a =>
+     Status
+     -> a
+     -> ActionM ()
+resp code entity = do
+    Web.Scotty.json entity 
+    status code
+
 main = scotty 3000 $ do
-    get "/api/eventStream/:name" $ do
+    get "/api/eventstream/:name" $ do
         strName <- param "name"
         let strm = streamName strName
         let transportMsg = getTransportMessage <$> strm
-        either (\l -> status badRequest400) (\r -> Web.Scotty.json r) transportMsg
+        either (\l -> resp badRequest400 (toErrorBody l)) (\e -> resp ok200 e) transportMsg
