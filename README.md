@@ -2,7 +2,7 @@
 A very simple sample project for playing around with the Haskell [Scotty](https://hackage.haskell.org/package/scotty) web framework.
 
 
-If you are interested in the code in its most simplest api form (i.e. just past 'hello world', before further, shall we generously say, experiments were performed on the code), try it at this commit:
+If you are interested in the code in a fairly simple form (i.e. just past 'hello world', before further, shall we generously say, experiments were performed on the code), try it at this commit:
 
 https://github.com/hombredequeso/scotty-api/tree/b29c8e2342ab96692e49727af2e099288f64d84d
 
@@ -27,10 +27,10 @@ From the project root directory:
 
 ### Usage
 ```
-> curl localhost:3000/api/eventStream/abcd
+> curl localhost:3000/api/eventstream/abcd
 {"header":{"messageStream":"abcd"},"messages":[{"mType":"type1","description":"some message"},{"mType":"type2","description":"another message"}]}
 >
-> curl localhost:3000/api/eventStream/thisStreamNameIsWayTooLongAndWillResultInAnError
+> curl localhost:3000/api/eventstream/thisStreamNameIsWayTooLongAndWillResultInAnError
 >
 ```
 
@@ -57,7 +57,7 @@ This project was created as follows:
 ```
 
 ##### Dependency Management
-Add dependency on scotty to cabel file.
+Add dependency on scotty, aeson, http-types to cabel file.
 See: scotty-api.cabal > executable > build depends
 
 ##### Write Website Code

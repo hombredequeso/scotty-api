@@ -71,17 +71,27 @@ instance ToJSON StreamName where
 instance ToJSON JsonErrorBody where
     toEncoding = genericToEncoding defaultOptions
 
+getInfo :: ActionM()
+getInfo = text "info about the api" *> status badRequest400
+
+-- Which is the same as:
+--
+getInfoB :: ActionM()
+getInfoB = do
+    text "Here's some info about the api, or not"
+    status badRequest400
+
 resp :: ToJSON a =>
-     Status
+    Status
      -> a
      -> ActionM ()
-resp code entity = do
-    Web.Scotty.json entity 
-    status code
+resp code entity = Web.Scotty.json entity *> status code
 
 main = scotty 3000 $ do
+    get "/api/info" getInfo
     get "/api/eventstream/:name" $ do
         strName <- param "name"
         let strm = streamName strName
         let transportMsg = getTransportMessage <$> strm
         either (\l -> resp badRequest400 (toErrorBody l)) (\e -> resp ok200 e) transportMsg
+
