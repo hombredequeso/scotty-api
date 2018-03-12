@@ -3,8 +3,11 @@ A very simple sample project for playing around with the Haskell [Scotty](https:
 
 
 If you are interested in the code in a fairly simple form (i.e. just past 'hello world', before further, shall we generously say, experiments were performed on the code), try it at this commit:
+
 https://github.com/hombredequeso/scotty-api/commit/a0c85ce3f506fbadce27e87922ab7cc8acc17c3f
+
 Viewable here:
+
 https://github.com/hombredequeso/scotty-api/tree/a0c85ce3f506fbadce27e87922ab7cc8acc17c3f
 
 Why Scotty? Because of this:
@@ -23,7 +26,7 @@ From the project root directory:
 ```
 > stack build
 > stack ghci
-*Main>  main
+*Main> main
 ```
 
 ### Usage
