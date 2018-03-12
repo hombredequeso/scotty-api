@@ -3,8 +3,9 @@ A very simple sample project for playing around with the Haskell [Scotty](https:
 
 
 If you are interested in the code in a fairly simple form (i.e. just past 'hello world', before further, shall we generously say, experiments were performed on the code), try it at this commit:
-
-https://github.com/hombredequeso/scotty-api/tree/b29c8e2342ab96692e49727af2e099288f64d84d
+https://github.com/hombredequeso/scotty-api/commit/a0c85ce3f506fbadce27e87922ab7cc8acc17c3f
+Viewable here:
+https://github.com/hombredequeso/scotty-api/tree/a0c85ce3f506fbadce27e87922ab7cc8acc17c3f
 
 Why Scotty? Because of this:
 ["A Haskell web framework inspired by Ruby's Sinatra, using WAI and Warp."](https://hackage.haskell.org/package/scotty)
