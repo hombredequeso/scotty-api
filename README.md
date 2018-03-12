@@ -5,9 +5,10 @@ A very simple sample project for playing around with the Haskell [Scotty](https:
 
 ## Prerequisites
 
-The primary prerequisite is the [Haskell Platform](https://www.haskell.org/platform/)
+The primary prerequisite is the [Haskell Platform](https://www.haskell.org/platform/).
 Ensure that is is at least 8.2.2.
 
+## Running
 From the project root directory:
 ```
 > stack build
