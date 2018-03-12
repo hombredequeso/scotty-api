@@ -91,7 +91,9 @@ main = scotty 3000 $ do
     get "/api/info" getInfo
     get "/api/eventstream/:name" $ do
         strName <- param "name"
-        let strm = streamName strName
-        let transportMsg = getTransportMessage <$> strm
-        either (\l -> resp badRequest400 (toErrorBody l)) (\e -> resp ok200 e) transportMsg
+        let transportMsg = getTransportMessage <$> streamName strName
+        either 
+            ( resp badRequest400 .toErrorBody ) 
+            ( resp ok200 )  
+            transportMsg
 
